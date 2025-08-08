@@ -7,6 +7,16 @@
 .buildlog/
 .history
 
+# Ignore sensitive files
+/src/diabetes_alert_system/.env
+/src/backend/.env
+
+# Ignore uploaded files
+/src/backend/upload/
+
+# Ignore Dependencies
+/src/backend/includes/
+
 
 
 # Flutter repo-specific
