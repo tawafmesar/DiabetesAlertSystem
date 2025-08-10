@@ -28,27 +28,10 @@ class AppLink {
 
 
 
-// ================================= Accidents ========================== //
-
-  static const String accidents_add = "$server/accidents/add.php";
-
-
-  static const String accidents_view = "$server/accidents/view.php";
-  static const String accidents_viewall = "$server/accidents/viewall.php";
-
-
-  // ================================= tips ========================== //
-
-  static const String tips_view = "$server/tips/view.php";
-  static const String tips_remove = "$server/tips/remove.php";
-  static const String tips_add = "$server/tips/add.php";
-
-
-  // ================================= notifications ========================== //
-
-  static const String notifications_view = "$server/notifications/view.php";
-  static const String notifications_remove = "$server/notifications/remove.php";
-  static const String notifications_add = "$server/notifications/add.php";
+// ================================= Medication ========================== //
+  static const String medicationview = "$server/medications/view.php"  ;
+  static const String medicationremove = "$server/medications/remove.php"  ;
+  static const String medicationadd = "$server/medications/add.php"  ;
 
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widget/custom_drawer.dart';
+import 'Medicationscreen.dart';
 
 
 class Home extends StatefulWidget {
@@ -17,7 +18,7 @@ class _HomeState extends State<Home> {
     final pages = [
       Center(child: Text(''),),
       Center(child: Text(''),),
-      Center(child: Text(''),),
+      MedicationScreen(),
       Center(child: Text(''),),
     ];
 

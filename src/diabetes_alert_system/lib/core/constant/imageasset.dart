@@ -38,6 +38,18 @@ class AppImageAsset {
   static const String Moderate = "$rootImages/Moderate.png";
   static const String Low = "$rootImages/low.png";
 
+  static const String Tablet = "$rootImages/Tablet.png";
+  static const String Capsule = "$rootImages/capsule.png";
+  static const String Syrup = "$rootImages/Syrup.png";
+  static const String Injection = "$rootImages/Injection.png";
+  static const String Cream = "$rootImages/Cream.png";
+  static const String Ointment = "$rootImages/Ointment.png";
+  static const String Gel = "$rootImages/Gel.png";
+  static const String Drops = "$rootImages/Drops.png";
+  static const String Suspension = "$rootImages/Suspension.png";
+
+  static const String DefaultImage = "$rootImages/DefaultImage.png";
+
 
 }
 
