@@ -30,18 +30,32 @@ function filterRequest($requestname)
 
 
 
-function getAllData($table, $where = null, $values = null, $json = true)
+function getAllData($table, $where = null, $values = null, $orderBy = null, $json = true)
 {
     global $con;
     $data = array();
-    if ($where == null) {
-        $stmt = $con->prepare("SELECT  * FROM $table   ");
-    } else {
-        $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
+
+    // basic validation for orderBy (allow only column names and optional ASC/DESC)
+    if ($orderBy !== null) {
+        if (!preg_match('/^[a-zA-Z0-9_]+\s*(ASC|DESC)?$/i', $orderBy)) {
+            // invalid orderBy - ignore it (or you could throw an error)
+            $orderBy = null;
+        }
     }
+
+    $sql = "SELECT * FROM {$table}";
+    if ($where != null) {
+        $sql .= " WHERE {$where}";
+    }
+    if ($orderBy != null) {
+        $sql .= " ORDER BY {$orderBy}";
+    }
+
+    $stmt = $con->prepare($sql);
     $stmt->execute($values);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $count = $stmt->rowCount();
+
     if ($json == true) {
         if ($count > 0) {
             echo json_encode(array("status" => "success", "data" => $data));
