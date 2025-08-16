@@ -50,6 +50,9 @@ class AppImageAsset {
 
   static const String DefaultImage = "$rootImages/DefaultImage.png";
 
+  static const String BloodPressure = "$rootImages/BloodPressure.png";
+  static const String HeartRate = "$rootImages/HeartRate.png";
+  static const String BloodSugar = "$rootImages/BloodSugar.png";
 
 }
 
