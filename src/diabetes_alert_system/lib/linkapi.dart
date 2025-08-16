@@ -35,6 +35,12 @@ class AppLink {
 
 
 
+  // ================================= Metrics ========================== //
+  static const String metricsview = "$server/metrics/view.php"  ;
+  static const String metricsremove = "$server/metrics/remove.php"  ;
+  static const String metricsreadd = "$server/metrics/add.php"  ;
+
+
 
 
 
