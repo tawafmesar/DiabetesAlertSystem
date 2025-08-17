@@ -1,3 +1,4 @@
+import 'package:diabetes_alert_system/view/screen/Metricsscreen.dart';
 import 'package:diabetes_alert_system/view/screen/auth/login.dart';
 import 'package:diabetes_alert_system/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:diabetes_alert_system/view/screen/auth/forgetpassword/resetpassword.dart';
@@ -31,7 +32,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.verfiyCodeSignUp, page: () => const VerfiyCodeSignUp()),
   GetPage(name: AppRoute.test, page: () => const Test()),
   GetPage(name: AppRoute.home, page: () => const Home()),
-
+  GetPage(name: AppRoute.metricsscreen, page: () => const MetricsScreen()),
 
 
 ];

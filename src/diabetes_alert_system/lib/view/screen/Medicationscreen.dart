@@ -9,6 +9,7 @@ import '../../data/datasource/model/MedicationModel.dart';
 import '../widget/add_medication_bottom_sheet.dart';
 import '../widget/custom_app_bar.dart';
 import '../widget/custom_drawer.dart';
+import '../widget/custom_fab.dart';
 
 class MedicationScreen extends StatelessWidget {
   const MedicationScreen({super.key});
@@ -77,13 +78,13 @@ class MedicationScreen extends StatelessWidget {
                         key: UniqueKey(),
                         direction: DismissDirection.endToStart,
                         background: Container(
-                          color: Colors.red,
+                          color: AppColor.backgroundcolor,
                           alignment: Alignment.centerRight,
                           padding: const EdgeInsets.only(right: 20),
                           child: const Icon(
                             Icons.delete,
-                            color: Colors.white,
-                            size: 30,
+                            color:Colors.red,
+                            size: 40,
                           ),
                         ),
                         confirmDismiss: (direction) async {
@@ -243,39 +244,13 @@ class MedicationScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),    floatingActionButton: Container(
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: LinearGradient(
-          colors: [
-            Color(0xFFEF3F2C),
-            Color(0xFF954695),
-            Color(0xFF0067B5),
-          ],
-          stops: [0.0, 0.6, 1.0],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          transform: GradientRotation(0.4),
-        ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 8,
-              offset: Offset(0, 4),
-            ),
-          ]
-      ),
-      child: FloatingActionButton(
-        onPressed: () {
-          AddMedicationBottomSheet(context);
-        },
-        backgroundColor: Colors
-            .transparent, // Transparent so the gradient behind shows
-        elevation: 0, // Prevent double shadows
-        child: Icon(Icons.medication, color: Colors.white),
-      ),
-    ),
-
+        ),    floatingActionButton:
+    customFAB(
+      icon: Icons.medication,
+      onPressed: () {
+        AddMedicationBottomSheet(context);
+      },
+    )
     );
   }
 }
