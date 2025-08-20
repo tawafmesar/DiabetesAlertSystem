@@ -1,7 +1,10 @@
 import 'package:diabetes_alert_system/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:is_first_run/is_first_run.dart';
 import 'bindings/intialbindings.dart';
+import 'controller/alarm/alarm.dart';
+import 'controller/alarm/notification.dart';
 import 'core/constant/routes.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
@@ -11,6 +14,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
 
+  initializeNotifications();// Initialize notifications
+
+  bool firstCall = await IsFirstRun.isFirstCall();
+  if (firstCall) {
+    // Initialize the app by creating default alarms etc.
+    listOfSavedAlarms = await initAlarms();
+  }
   runApp(const MyApp());
 }
 
