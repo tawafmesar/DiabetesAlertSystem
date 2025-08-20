@@ -6,14 +6,14 @@ import 'package:weekday_selector/weekday_selector.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart'; // Added import
 import '../../../controller/alarm/alarm.dart'; // Functions and more for the alarm
 import '../../../controller/alarm/alarm_controller.dart';
-import '../../../core/alarm_core/global.dart'; // Global variables and general outsourced stuff
-import '../../../core/alarm_core/components.dart'; // Outsourced widget components
 import 'package:get/get.dart';
 
 import '../../../core/class/handlingdataview.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/functions/validinput.dart';
+import '../../widget/auth/custom_auth_app_bar.dart';
 import '../../widget/auth/customtextformauth.dart';
+import '../../widget/custom_elevated_button.dart';
 
 class AddAlarmPage extends StatefulWidget {
   const AddAlarmPage({Key? key}) : super(key: key);
@@ -162,10 +162,11 @@ class _MyAddAlarmPageState extends State<AddAlarmPage> {
   Widget build(BuildContext context) {
     Get.put(AlarmControllerImp());
     return Scaffold(
-      appBar:
-      AppBar(
-        title: const Text("Add an alarm"),
-        backgroundColor: AppColor.primaryColor,
+
+      appBar: const CustomAuthAppBar(
+          title: 'Add an alarm',
+          icon:  Icons.alarm_add,
+          showBackButton:true
       )
       ,
       body: Container(
@@ -176,45 +177,46 @@ class _MyAddAlarmPageState extends State<AddAlarmPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  // Select Time button
                   Expanded(
                     flex: 5,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: AppColor.primaryColor,
-                      ),
+                    child: CustomElevatedButton(
+                      text: "Select Time",
+                      radius: 12,
+                      icon: Icons.access_time,
                       onPressed: _selectTime,
-                      child:const Text(
-                        "Select Time",
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
                   ),
+
+                  // Selected time display
                   Expanded(
                     flex: 5,
-
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[ GestureDetector(
-                      onTap: _selectTime,
-                      behavior: HitTestBehavior.opaque,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          const Text(
-                            'Selected time:',
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: _selectTime,
+                          behavior: HitTestBehavior.opaque,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              const Text(
+                                'Selected time:',
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                _chosenTime.format(context),
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                            ],
                           ),
-                          SizedBox(height: 6),
-                          Text(
-                            _chosenTime.format(context),
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        ],
-                      ),
-                    )]
+                        )
+                      ],
                     ),
                   ),
                 ],
-              ),
+              )
+              ,
               SizedBox(height: 20),
 
              const Row(
@@ -233,17 +235,14 @@ class _MyAddAlarmPageState extends State<AddAlarmPage> {
                 children: <Widget>[
                   Expanded(
                     flex: 5,
-                    child: ElevatedButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: AppColor.primaryColor,
-                      ),
-
+                    child: CustomElevatedButton(
+                      text: "Select Date",
+                      radius: 12,
+                      icon: Icons.calendar_today,
                       onPressed: _selectDate,
-                      child:const Text('Select date',
-                        style: TextStyle(color: AppColor.white),
-                      ),
                     ),
-                  ),
+                  )
+                  ,
                   Expanded(
                     flex: 5,
                     child:Row(
@@ -406,37 +405,35 @@ class _MyAddAlarmPageState extends State<AddAlarmPage> {
               const SizedBox(height: 10), // Added space
 
               Row(
-                // Cancel and confirm buttons
                 children: <Widget>[
                   // Cancel button
                   Expanded(
-                    flex: 30,
+                    flex: 40,
                     child: Center(
-                      child: TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: AppColor.backgroundcolor,
-                          ),
+                      child: CustomElevatedButton(
+                        text: "Cancel",
+                        radius: 12,
+                        icon: Icons.close,
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const Text('Cancel',style: TextStyle(color: AppColor.primaryColor),),
                       ),
                     ),
                   ),
+
                   const Expanded(
-                    // Some space
-                    flex: 40,
+                    flex: 20,
                     child: Center(),
                   ),
 
                   // Confirm button
                   Expanded(
-                    flex: 30, // 30%
+                    flex: 40,
                     child: Center(
-                      child: OutlinedButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: AppColor.primaryColor,
-                        ),
+                      child: CustomElevatedButton(
+                        text: "Confirm",
+                        radius: 12,
+                        icon: Icons.check,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             if (selectedOption == null) {
@@ -451,12 +448,13 @@ class _MyAddAlarmPageState extends State<AddAlarmPage> {
                             Navigator.pop(context);
                           }
                         },
-                        child: const Text('Confirm',style: TextStyle(color: Colors.white),),
                       ),
                     ),
                   ),
                 ],
-              ),
+              )
+              ,
+
             ],
           ),
         ),
