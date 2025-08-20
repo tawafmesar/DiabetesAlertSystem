@@ -2,7 +2,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as dev;
 
-import 'package:medicare/core/constant/color.dart';
+import '../../core/constant/color.dart';
+
 
 /// Notification controller
 class NotificationController {
