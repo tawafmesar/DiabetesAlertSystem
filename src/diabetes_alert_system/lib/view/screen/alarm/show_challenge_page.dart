@@ -1,5 +1,5 @@
+import 'package:diabetes_alert_system/view/screen/alarm/success_page.dart';
 import 'package:flutter/material.dart'; //Google Material Design assets
-import 'package:medicare/view/screen/alarm/success_page.dart';
 import 'dart:developer' as dev;
 import '../../../controller/alarm/alarm.dart'; // functions and more for the alarm
 import '../../../controller/alarm/quiz.dart';
