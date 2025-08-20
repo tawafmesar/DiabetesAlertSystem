@@ -1,23 +1,24 @@
+import 'package:diabetes_alert_system/view/widget/time_date_display.dart';
 import 'package:flutter/material.dart'; //Google Material Design assets
 import 'package:intl/intl.dart';
-import 'package:medicare/core/constant/color.dart';
 import 'dart:async';
 import 'dart:developer' as dev;
 import 'package:shared_preferences/shared_preferences.dart'; // for saving/loading data for new start of the app
 import 'dart:convert'; // for JSON etc.
 import '../../../controller/alarm/alarm.dart'; // functions and more for the alarm
-import '../../../controller/alarm/alarm_controller.dart';
 import '../../../core/alarm_core/components.dart';
 import '../../../core/alarm_core/global.dart'; // global variables and general outsourced stuff
+import '../../../core/constant/color.dart';
 import '../../../core/constant/imageasset.dart';
-import 'add_alarm_page.dart'; // widget for the alarm adding
-import 'package:get/get.dart';
+import '../../widget/custom_app_bar.dart';
+import '../../widget/custom_drawer.dart';
+import '../../widget/custom_fab.dart';
+import 'add_alarm_page.dart';
 
 class HomePageAlarmOverview extends StatefulWidget {
   const HomePageAlarmOverview({Key? key, required this.title})
       : super(key: key);
 
-  // This widget is the homepage of the app. It has different states.
   final String title;
 
   @override
@@ -188,103 +189,26 @@ class _HomePageAlarmOverviewState extends State<HomePageAlarmOverview> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar:
-      AppBar(
-        title: const Text("Alarm" ,       style: TextStyle(color: AppColor.white),
-      ),
-        backgroundColor: AppColor.primaryColor,
-      )
-      ,
+        appBar:
+       const CustomAppBar(
+          title: 'Alarm',
+          icon: Icons.alarm
+        ),
+      drawer: CustomDrawer(),
+
       body: Container(
         child: ListView(
           //scrollable
           children: <Widget>[
             Column(
               children: <Widget>[
-                // I need this single column to allow multiple rows
-                Row(
-                  // Row for the current date/time and the add alarm button
-                  children: <Widget>[
-                    Expanded(
-                      // Col/Expanded for showing the current time and date
-                      flex: 7, // 70%
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Column(
-                          //mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-
-                                children: <Widget>[
-                                  const Expanded(
-                                    flex: 4,
-                                    child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'Current time:',
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 6,
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        currentTime,
-                                        style: Theme.of(context).textTheme.titleLarge,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Row(
-                              children: <Widget>[SizedBox(height: 15)],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: <Widget>[
-                                  const Expanded(
-                                    flex: 4,
-                                    child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child:  Text(
-                                        'Current date:',
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 6,
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        _dateString,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleLarge,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-
-                      ),
-                    ),
-                  ],
-                ),
+                AwesomeTimeDate(now: _now),
                 Divider(),
                 const Row(
                   children: <Widget>[SizedBox(height: 40)],
                 ),
-                // Add some distance between the next row
-
                 // List of alarms (for loop)
                 for (int i = 0; i < listOfSavedAlarms.length; i++)
                   Dismissible(
@@ -375,7 +299,7 @@ class _HomePageAlarmOverviewState extends State<HomePageAlarmOverview> {
                                     listOfSavedAlarms[i]?.isRecurrent == true
                                         ? "Recurs: ${weekdayBoolListToString(listOfSavedAlarms[i]!.weekdayRecurrence)}"
                                         : "Date: ${DateFormat('EEE, d MMM').format(listOfSavedAlarms[i]!.alarmDate)}",
-                                    style: const TextStyle(fontSize: 17),
+                                    style: const TextStyle(fontSize: 17, color: AppColor.white),
                                   ),
                                 ),
                               ),
@@ -426,8 +350,9 @@ class _HomePageAlarmOverviewState extends State<HomePageAlarmOverview> {
             ),
           ],
         ),
-      ),floatingActionButton: FloatingActionButton(
-      heroTag: "addAlarmButton",
+      ),floatingActionButton:
+    customFAB(
+      icon: Icons.alarm_add,
       onPressed: () {
         Navigator.push(
           context,
@@ -436,9 +361,7 @@ class _HomePageAlarmOverviewState extends State<HomePageAlarmOverview> {
               const AddAlarmPage()),
         );
       },
-      child: Icon(Icons.alarm_add),
-      backgroundColor: AppColor.primaryColor,
-    ),
+    )
     );
   }
 }
