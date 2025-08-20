@@ -40,8 +40,10 @@ class AppLink {
   static const String metricsremove = "$server/metrics/remove.php"  ;
   static const String metricsreadd = "$server/metrics/add.php"  ;
 
-
-
+  // ================================= Alarms ========================== //
+  static const String alarmsadd = "$server/alarms/add.php"  ;
+  static const String alarmsremove = "$server/alarms/remove.php"  ;
+  static const String alarmsremoveall = "$server/alarms/removeall.php"  ;
 
 
 }
