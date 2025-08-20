@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart'; // Google Material Design assets
 import 'package:intl/intl.dart';
-import 'package:medicare/core/constant/color.dart';
 import 'dart:async';
 import '../../../controller/alarm/alarm.dart'; // functions and more for the alarm
 import '../../../core/alarm_core/global.dart'; // global variables and general outsourced stuff
+import '../../../core/constant/color.dart';
 import '../../../core/constant/routes.dart';
 import 'show_challenge_page.dart'; // widget for the challenge
 import 'package:get/get.dart';
@@ -176,7 +176,7 @@ class _MyShowAlarmPageState extends State<ShowAlarmPage> {
                     } else {
                       // No challenge mode
                       _deactivateAlarm(widget.triggeredAlarm, widget.alarmNumber);
-                      Get.offNamed(AppRoute.homepage);
+                    //TODO Add Get.offNamed(AppRoute.homepage);
                     }
                   },
                   child: const Text(
