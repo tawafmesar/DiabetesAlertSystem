@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart'; //Google Material Design assets
-import 'package:medicare/core/constant/color.dart';
 import 'dart:developer' as dev;
 import '../../../core/alarm_core/global.dart'; // global variables and general outsourced stuff
+import '../../../core/constant/color.dart';
 import 'homepage_alarm_overview.dart';
 import 'dart:async';
 
