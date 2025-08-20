@@ -4,9 +4,9 @@ import '../../core/class/statusrequest.dart';
 import '../../core/constant/routes.dart';
 import '../../core/functions/handingdatacontroller.dart';
 import '../../core/services/services.dart';
+import '../../data/datasource/model/MedicationModel.dart';
 import '../../data/datasource/remote/alarms_data.dart';
 import '../../data/datasource/remote/medication_data.dart';
-import '../../data/models/MedicationModel.dart';
 
 
 abstract class AlarmController extends GetxController {
