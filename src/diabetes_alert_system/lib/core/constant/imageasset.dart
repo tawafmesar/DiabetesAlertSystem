@@ -54,5 +54,11 @@ class AppImageAsset {
   static const String HeartRate = "$rootImages/HeartRate.png";
   static const String BloodSugar = "$rootImages/BloodSugar.png";
 
+  static const String alarmactive = "$rootImages/alarmactive.png";
+  static const String alarmnotactive = "$rootImages/alarmnotactive.png";
+
+
+  static const String moon = "$rootImages/moon.png";
+  static const String sun = "$rootImages/sun.png";
 }
 

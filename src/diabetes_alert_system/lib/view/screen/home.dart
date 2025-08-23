@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/custom_drawer.dart';
 import 'Medicationscreen.dart';
 import 'Metricsscreen.dart';
+import 'alarm/homepage_alarm_overview.dart';
 
 
 class Home extends StatefulWidget {
@@ -21,6 +22,7 @@ class _HomeState extends State<Home> {
       MetricsScreen(),
       MedicationScreen(),
       Center(child: Text(''),),
+      HomePageAlarmOverview(title: 'Alarm',)
     ];
 
     return Scaffold(
@@ -75,6 +77,10 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: Icon(Icons.fitness_center),
               label: 'Activity',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.alarm),
+              label: 'Alarm',
             ),
           ],
         ),
