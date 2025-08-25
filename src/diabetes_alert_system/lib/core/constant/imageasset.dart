@@ -60,5 +60,28 @@ class AppImageAsset {
 
   static const String moon = "$rootImages/moon.png";
   static const String sun = "$rootImages/sun.png";
+
+
+  static const String walking = "$rootImages/Walking.webp";
+  static const String running = "$rootImages/Running2.webp";
+  static const String cycling = "$rootImages/Cycling.webp";
+  static const String swimming = "$rootImages/Swimming.webp";
+  static const String jump_rope = "$rootImages/Jump-Rope.gif";
+  static const String pushups = "$rootImages/Pushups.webp";
+  static const String situps = "$rootImages/situps.webp";
+  static const String squats = "$rootImages/squats.webp";
+  static const String squat_jumps = "$rootImages/squatjumps.gif";
+  static const String lunges = "$rootImages/lungess.webp";
+  static const String plank = "$rootImages/planks.webp";
+  static const String burpees = "$rootImages/burpees.webp";
+  static const String benchdips = "$rootImages/benchdips.webp";
+  static const String clapping_pushups = "$rootImages/clapping_pushups.webp";
+  static const String bicycle_crunch = "$rootImages/bicycle_crunch.gif";
+  static const String leg_raises = "$rootImages/leg_raises.gif";
+  static const String mountain_climbers = "$rootImages/mountain_climbers.webp";
+  static const String russian_twists = "$rootImages/russian_twists2.webp";
+  static const String side_plank = "$rootImages/side_plank.webp";
+  static const String other_activity = "$rootImages/other2.gif";
+
 }
 
