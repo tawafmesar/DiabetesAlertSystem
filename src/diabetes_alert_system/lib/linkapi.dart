@@ -45,5 +45,12 @@ class AppLink {
   static const String alarmsremove = "$server/alarms/remove.php"  ;
   static const String alarmsremoveall = "$server/alarms/removeall.php"  ;
 
+  // ================================= activities ========================== //
+  static const String activityadd = "$server/activities/add.php"  ;
+  static const String activityview = "$server/activities/view.php"  ;
+  static const String activityremove = "$server/activities/remove.php"  ;
+
+
+
 
 }
