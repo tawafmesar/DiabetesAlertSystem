@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../controller/activity_controller.dart';
 import '../widget/custom_drawer.dart';
 import 'Medicationscreen.dart';
 import 'Metricsscreen.dart';
+import 'activity_screen.dart';
 import 'alarm/homepage_alarm_overview.dart';
 
 
@@ -21,7 +23,7 @@ class _HomeState extends State<Home> {
       Center(child: Text(''),),
       MetricsScreen(),
       MedicationScreen(),
-      Center(child: Text(''),),
+      ActivityScreen(),
       HomePageAlarmOverview(title: 'Alarm',)
     ];
 
