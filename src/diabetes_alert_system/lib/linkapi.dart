@@ -50,6 +50,10 @@ class AppLink {
   static const String activityview = "$server/activities/view.php"  ;
   static const String activityremove = "$server/activities/remove.php"  ;
 
+  // ================================= Home ========================== //
+
+  static const String homestaticsview = "$server/statistics.php"  ;
+
 
 
 
