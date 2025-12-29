@@ -5,6 +5,7 @@ import 'Medicationscreen.dart';
 import 'Metricsscreen.dart';
 import 'activity_screen.dart';
 import 'alarm/homepage_alarm_overview.dart';
+import 'home_screeen.dart';
 
 
 class Home extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      Center(child: Text(''),),
+      HomeScreen(),
       MetricsScreen(),
       MedicationScreen(),
       ActivityScreen(),

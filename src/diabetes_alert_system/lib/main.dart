@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:is_first_run/is_first_run.dart';
 import 'bindings/intialbindings.dart';
+import 'controller/activity_controller.dart';
 import 'controller/alarm/alarm.dart';
 import 'controller/alarm/notification.dart';
+import 'controller/home_controller.dart';
+import 'controller/medication_controller.dart';
+import 'controller/metrics_cotroller.dart';
 import 'core/constant/routes.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
@@ -21,6 +25,15 @@ void main() async {
     // Initialize the app by creating default alarms etc.
     listOfSavedAlarms = await initAlarms();
   }
+
+
+
+  Get.lazyPut<HomeControllerImp>(() => HomeControllerImp());
+  Get.lazyPut<MetricsControllerImp>(() => MetricsControllerImp());
+  Get.lazyPut<MedicationControllerImp>(() => MedicationControllerImp());
+  Get.lazyPut<ActivityControllerImp>(() => ActivityControllerImp());
+
+
   runApp(const MyApp());
 }
 
