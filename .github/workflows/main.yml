@@ -1,0 +1,31 @@
+name: "TOC Generator"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write   # allow creating PRs and writing files via GITHUB_TOKEN
+
+jobs:
+  generateTOC:
+    name: "Generate/Update TOC"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "Run TOC Generator (technote-space/toc-generator)"
+        uses: technote-space/toc-generator@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET_PATHS: "README.md"                # target file(s) (comma-separated allowed)
+          CREATE_PR: "true"                        # create a PR instead of forcing direct push
+          COMMIT_MESSAGE: "chore(docs): update Table of Contents"
+          PR_TITLE: "chore(docs): update Table of Contents (auto-generated)"
+          PR_BODY: "This PR updates the README Table of Contents using technote-space/toc-generator."
