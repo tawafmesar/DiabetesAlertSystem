@@ -33,29 +33,6 @@ A smart diabetes management application — cross-platform mobile frontend built
 
 > This document provides a clear project overview, technical architecture, deployment and development instructions, API references, and contribution guidelines suitable for professional audiences (maintainers, reviewers, and developers).
 
----
-
-**Table of Contents**
-
-- [Project Overview](#project-overview)  
-- [Key Features](#key-features)  
-- [Screenshots](#screenshots)  
-- [Technology Stack](#technology-stack)  
-- [Repository Structure (high-level)](#repository-structure-high-level)  
-- [Quick Start — Local Development](#quick-start--local-development)  
-  - [Prerequisites](#prerequisites)  
-  - [Backend (PHP + MySQL)](#backend-php--mysql)  
-  - [Frontend (Flutter)](#frontend-flutter)  
-- [Configuration & Environment](#configuration--environment)  
-- [Database](#database)  
-- [API Reference (summary)](#api-reference-summary)  
-- [Testing](#testing)  
-- [Building & Release](#building--release)  
-- [Contributing](#contributing)  
-- [Security & Privacy Notes](#security--privacy-notes)  
-- [License](#license)  
-- [Contact / Maintainers](#contact--maintainers)  
-- [Appendix — Useful commands & tips](#appendix--useful-commands--tips)
 
 ---
 
