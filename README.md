@@ -1,3 +1,30 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [DiabetesAlertSystem](#diabetesalertsystem)
+  - [Project Overview](#project-overview)
+  - [Key Features](#key-features)
+  - [Screenshots](#screenshots)
+  - [Technology Stack](#technology-stack)
+  - [Repository structure (high-level)](#repository-structure-high-level)
+  - [Quick Start — Local Development](#quick-start--local-development)
+    - [Prerequisites](#prerequisites)
+    - [Backend (PHP + MySQL)](#backend-php--mysql)
+    - [Frontend (Flutter)](#frontend-flutter)
+  - [Configuration & Environment](#configuration--environment)
+  - [Database](#database)
+  - [API Reference (summary)](#api-reference-summary)
+  - [Testing](#testing)
+  - [Building & Release](#building--release)
+  - [Contributing](#contributing)
+  - [Security & Privacy Notes](#security--privacy-notes)
+  - [License](#license)
+  - [Contact / Maintainers](#contact--maintainers)
+  - [Appendix — Useful commands & tips](#appendix--useful-commands--tips)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 <img  alt="Loading" src="https://github.com/user-attachments/assets/727d414f-b446-4d48-af8d-86163f52d2e7" />
 
