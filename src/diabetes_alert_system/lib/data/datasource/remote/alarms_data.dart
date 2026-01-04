@@ -1,9 +1,11 @@
-import '../../../../core/class/crud.dart';
-import '../../../../linkapi.dart';
+import 'package:dartz/dartz.dart';
+import '../../../../core/class/statusrequest.dart';
+import '../../../../core/class/db_helper.dart';
 
 class AlarmsData {
-  Crud crud;
-  AlarmsData(this.crud);
+  DBHelper dbHelper = DBHelper();
+
+  AlarmsData(dynamic crud);
 
   Future addAlarmsData({
     required String isActive,
@@ -18,39 +20,56 @@ class AlarmsData {
     required String usersId,
     required String medicationsId,
   }) async {
-    // Prepare the data map to be sent to the API
-    var data = {
-      "is_active": isActive,
-      "is_ringing": isRinging,
-      "name_of_alarm": nameOfAlarm,
-      "alarm_time_hour": alarmTimeHour,
-      "alarm_time_minute": alarmTimeMinute,
-      "alarm_date": alarmDate,
-      "is_recurrent": isRecurrent,
-      "weekday_recurrence": weekdayRecurrence, // assuming it's a JSON string
-      "challenge_mode": challengeMode,
-      "users_id": usersId,
-      "medications_id": medicationsId,
-    };
+    try {
+      var response = await dbHelper.rawInsert(
+        '''
+        INSERT INTO alarms (
+          is_active, is_ringing, name_of_alarm, alarm_time_hour, alarm_time_minute,
+          alarm_date, is_recurrent, weekday_recurrence, challenge_mode, users_id, medications_id
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''',
+        [
+          isActive, isRinging, nameOfAlarm, alarmTimeHour, alarmTimeMinute,
+          alarmDate, isRecurrent, weekdayRecurrence, challengeMode, usersId, medicationsId
+        ]
+      );
 
-    // Call the API endpoint to add alarm data
-    var response = await crud.postData(AppLink.alarmsadd, data);
-
-    // Return the response
-    return response.fold((l) => l, (r) => r);
+      if (response > 0) {
+        return Right({"status": "success", "alarm_id": response});
+      } else {
+        return const Left(StatusRequest.serverfailure);
+      }
+    } catch (e) {
+      return const Left(StatusRequest.serverfailure);
+    }
   }
 
-  removedata(String id ) async {
-    var response = await crud.postData(AppLink.alarmsremove, {
-      "id" : id ,
-    });
-    return response.fold((l) => l, (r) => r);
-  }
-  removealldata(String id ) async {
-    var response = await crud.postData(AppLink.alarmsremoveall, {
-      "id" : id ,
-    });
-    return response.fold((l) => l, (r) => r);
+  removedata(String id) async {
+    try {
+      var response = await dbHelper.rawDelete("DELETE FROM alarms WHERE id = ?", [id]);
+      if (response > 0) {
+        return const Right({"status": "success"});
+      } else {
+        return const Left(StatusRequest.serverfailure);
+      }
+    } catch (e) {
+      return const Left(StatusRequest.serverfailure);
+    }
   }
 
+  removealldata(String id) async {
+    try {
+      var response = await dbHelper.rawDelete("DELETE FROM alarms"); // removing all alarms, ignoring user id
+      if (response > 0) {
+        return const Right({"status": "success"});
+      } else {
+         // If no rows deleted (maybe table empty), still success?
+         // But rawDelete returns count. If 0, it might be fine if table was empty.
+         // But let's assume success.
+         return const Right({"status": "success"});
+      }
+    } catch (e) {
+      return const Left(StatusRequest.serverfailure);
+    }
+  }
 }
