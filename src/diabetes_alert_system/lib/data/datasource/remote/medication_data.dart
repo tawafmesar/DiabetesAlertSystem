@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/class/statusrequest.dart';
 import '../../../../core/class/db_helper.dart';
+import '../../../../core/class/crud.dart';
 
 class MedicationData {
   DBHelper dbHelper = DBHelper();
 
-  MedicationData(dynamic crud); // Keeping constructor signature compatible but ignoring crud
+  MedicationData(Crud crud);
 
   postdata(String id) async {
     try {

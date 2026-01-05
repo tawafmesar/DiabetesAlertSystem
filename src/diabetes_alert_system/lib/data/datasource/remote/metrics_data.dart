@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/class/statusrequest.dart';
 import '../../../../core/class/db_helper.dart';
+import '../../../../core/class/crud.dart';
 
 class MetricsData {
   DBHelper dbHelper = DBHelper();
 
-  MetricsData(dynamic crud);
+  MetricsData(Crud crud);
 
   postdata(String id) async {
     try {

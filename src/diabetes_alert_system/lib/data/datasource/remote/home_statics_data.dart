@@ -2,11 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:sqflite/sqflite.dart';
 import '../../../../core/class/statusrequest.dart';
 import '../../../../core/class/db_helper.dart';
+import '../../../../core/class/crud.dart';
 
 class HomeStaticsData {
   DBHelper dbHelper = DBHelper();
 
-  HomeStaticsData(dynamic crud);
+  HomeStaticsData(Crud crud);
 
   postdata(String id) async {
     try {

@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/class/statusrequest.dart';
 import '../../../../core/class/db_helper.dart';
+import '../../../../core/class/crud.dart';
 
 class AlarmsData {
   DBHelper dbHelper = DBHelper();
 
-  AlarmsData(dynamic crud);
+  AlarmsData(Crud crud);
 
   Future addAlarmsData({
     required String isActive,
