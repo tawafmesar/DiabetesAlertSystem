@@ -13,18 +13,7 @@ class MyMiddleWare extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-
-    if (myServices.sharedPreferences.getString("step") == "2") {
-      return const RouteSettings(name: AppRoute.home);
-    }
-    if (myServices.sharedPreferences.getString("step") == "3") {
-      return const RouteSettings(name: AppRoute.homeemergency);
-    }
-    if (myServices.sharedPreferences.getString("step") == "1") {
-      return const RouteSettings(name: AppRoute.login);
-    }
-
-    return null;
-
+    // Always redirect to home as we are bypassing auth
+    return const RouteSettings(name: AppRoute.home);
   }
 }

@@ -18,11 +18,13 @@ import 'core/middleware/mymiddleware.dart';
 
 
 List<GetPage<dynamic>>? routes = [
+  // Changed initial route to go to Home via Middleware which now forces Home
   GetPage(name: "/",
-      page: () =>  const Login() , middlewares: [
+      page: () =>  const Home() , middlewares: [
         MyMiddleWare()
       ]),
   GetPage(name: AppRoute.splash, page: () =>  const SplashScreen()),
+  // Keep login pages but they won't be used
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.signUp, page: () => const SignUp()),
   GetPage(name: AppRoute.forgetPassword, page: () => const ForgetPassword()),
